@@ -30,7 +30,7 @@ Each snippet:
 This is **not production code** — it’s a **learning and exploration space** for developers who want to deepen their Java skills.
 
 ---
-
+<!--
 💡 **Examples**
 
 | Snippet | Description | Link |
@@ -39,6 +39,7 @@ This is **not production code** — it’s a **learning and exploration space** 
 | `TextLanguageDetector` | Language detection by character frequency analysis. | [View](https://github.com/hugoegry/java-snippets-collection-WP/blob/main/src/snippets/ai/TextLanguageDetector.java) |
 | `SimpleHttpServer` | Minimal HTTP server using `com.sun.net.httpserver`. | [View](https://github.com/hugoegry/java-snippets-collection-WP/tree/main/src/snippets/network/SimpleHttpServer.java) |
 | `ThreadPoolShowcase` | Demonstrates basic thread pooling with `ExecutorService`. | [View](https://github.com/hugoegry/java-snippets-collection-WP/tree/main/src/snippets/concurrency/ThreadPoolShowcase.java) |
+-->
 
 ---
 
