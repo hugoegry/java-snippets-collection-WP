@@ -30,3 +30,23 @@ Each snippet:
 This is **not production code** — it’s a **learning and exploration space** for developers who want to deepen their Java skills.
 
 ---
+
+💡 **Exemples**
+
+| Snippet | Description | Lien |
+|----------|--------------|------|
+| `HangmanGameCLI` | Jeu du pendu simple en console Java. | [Voir](https://github.com/hugoegry/java-snippets-collection-WP/tree/main/src/snippets/games/HangmanGameCLI.java) |
+| `TextLanguageDetector` | Détection de langue par analyse fréquentielle. | [Voir](https://github.com/hugoegry/java-snippets-collection-WP/blob/main/src/snippets/ai/TextLanguageDetector.java) |
+| `SimpleHttpServer` | Mini serveur HTTP avec `com.sun.net.httpserver`. | [Voir](https://github.com/hugoegry/java-snippets-collection-WP/tree/main/src/snippets/network/SimpleHttpServer.java) |
+| `ThreadPoolShowcase` | Exemple d’exécution multi-threads avec `ExecutorService`. | [Voir](https://github.com/hugoegry/java-snippets-collection-WP/tree/main/src/snippets/concurrency/ThreadPoolShowcase.java) |
+
+---
+
+🧩 **Contribution**  
+Les contributions sont les bienvenues via des pull requests.  
+Gardez vos snippets :
+- courts,  
+- autonomes,  
+- bien commentés.  
+
+👉 *Clarté, concision, créativité.*
