@@ -1,84 +1,59 @@
-import java.util.*;
+public abstract class SpaceMarine extends Unit {
+    protected Weapon weapon = null;
 
-public class SpaceArena {
-    private List<Monster> monsters = new ArrayList<>();
-    private List<SpaceMarine> marines = new ArrayList<>();
-    private List<Unit> alreadyEntered = new ArrayList<>(); // sav qui est entré dans l arene \\
-    public void enlistMonsters(List<Monster> newMonsters) {
-        for (Monster m : newMonsters) if (!monsters.contains(m)) monsters.add(m);
+    protected SpaceMarine(String name, int hp, int ap) {
+        super(name, hp, ap);
     }
 
-    public void enlistSpaceMarines(List<SpaceMarine> newMarines) {
-        for (SpaceMarine sm : newMarines) if (!marines.contains(sm)) marines.add(sm);
+    public Weapon getWeapon() { 
+        return weapon;
     }
 
-    public boolean fight() {
-        if (monsters.isEmpty()) {
-            System.out.println("No monsters available to fight.");
+    @Override
+    public boolean equip(Weapon weapon) {
+        if (weapon == null || weapon.isEquipped()) return false;
+        this.weapon = weapon;
+        weapon.setEquipped(true);
+        System.out.println(name + " has been equipped with a " + weapon.getName() + ".");
+        return true;
+    }
+
+    @Override
+    public boolean attack(Fighter target) {
+        if (dead) return false;
+
+        if (weapon == null) {
+            System.out.println(name + ": Hey, this is crazy. I'm not going to fight this empty-handed.");
             return false;
         }
-        if (marines.isEmpty()) {
-            System.out.println("Those cowards ran away.");
+
+        if (weapon.isMelee() && closeTarget != target) {
+            System.out.println(name + ": I'm too far away from " + target.getName() + ".");
             return false;
         }
 
-        int monsterIndex = 0;
-        int marineIndex = 0;
-        boolean hasFought = false;
+        if (ap < weapon.getApcost()) return false;
 
-        // Cherche les premiers vivants dans chaque camp
-        while (marineIndex < marines.size() && marines.get(marineIndex).getHp() <= 0) marineIndex++;
-        while (monsterIndex < monsters.size() && monsters.get(monsterIndex).getHp() <= 0) monsterIndex++;
-        if (marineIndex >= marines.size() || monsterIndex >= monsters.size()) return false;
-
-        SpaceMarine marine = marines.get(marineIndex);
-        Monster monster = monsters.get(monsterIndex);
-
-        if (!alreadyEntered.contains(marine)) {
-            System.out.println(marine.getName() + " has entered the arena.");
-            alreadyEntered.add(marine);
-        }
-        if (!alreadyEntered.contains(monster)) {
-            System.out.println(monster.getName() + " has entered the arena.");
-            alreadyEntered.add(monster);
-        }
-        hasFought = true;
-
-        while (marineIndex < marines.size() && monsterIndex < monsters.size()) {
-
-            while (marine.getHp() > 0 && monster.getHp() > 0) {
-                if (!marine.attack(monster)) {
-                    if (!marine.moveCloseTo(monster)) marine.recoverAP();
-                }
-
-                if (monster.getHp() <= 0) break;
-
-                if (!monster.attack(marine)) {
-                    if (!monster.moveCloseTo(marine)) monster.recoverAP();
-                }
-            }
-
-            if (marine.getHp() > 0) {
-                marine.recoverAP();
-                monsterIndex++;
-                if (monsterIndex >= monsters.size()) break;
-                monster = monsters.get(monsterIndex);
-                alreadyEntered.add(monster);
-                System.out.println(monster.getName() + " has entered the arena.");
-            } else {
-                monster.recoverAP();
-                marineIndex++;
-                if (marineIndex >= marines.size()) break;
-                marine = marines.get(marineIndex);
-                alreadyEntered.add(marine);
-                System.out.println(marine.getName() + " has entered the arena.");
-            }
-        }
-
-        if (marineIndex >= marines.size()) System.out.println("The monsters are victorious.");
-        else System.out.println("The spaceMarines are victorious.");
-
-        return hasFought;
+        System.out.println(name + " attacks " + target.getName() + " with a " + weapon.getName() + ".");
+        weapon.attack();
+        ap -= weapon.getApcost();
+        target.receiveDamage(weapon.getDamage());
+        return true;
     }
 
+    @Override
+    public void receiveDamage(int damage) {
+        if (dead) return;
+        hp -= damage;
+        if (hp <= 0) {
+            hp = 0;
+            dead = true;
+        }
+    }
+
+    @Override
+    public void recoverAP() {
+        ap += 9;
+        if (ap > 50) ap = 50;
+    }
 }
