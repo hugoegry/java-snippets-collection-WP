@@ -197,7 +197,6 @@ public class main {
         arena.enlistMonsters(Arrays.asList(new RadScorpion(), new SuperMutant(), new RadScorpion()));
         arena.enlistSpaceMarines(Arrays.asList(new TacticalMarine("Joe"), new AssaultTerminator("Abaddon"), new TacticalMarine("Rose")));
         arena.fight();
-        System.out.println("--- Next Fight ---");
         arena.enlistMonsters(Arrays.asList(new SuperMutant(), new SuperMutant()));
         arena.fight();
     }
