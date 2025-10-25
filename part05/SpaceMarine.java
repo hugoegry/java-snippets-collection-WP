@@ -11,7 +11,7 @@ public abstract class SpaceMarine extends Unit {
 
     @Override
     public boolean equip(Weapon weapon) {
-         if (weapon == null || weapon.isEquipped()) return false;
+        if (weapon == null || weapon.isEquipped()) return false;
         this.weapon = weapon;
         weapon.setEquipped(true);
         System.out.println(name + " has been equipped with a " + weapon.getName() + ".");
@@ -48,7 +48,6 @@ public abstract class SpaceMarine extends Unit {
         if (hp <= 0) {
             hp = 0;
             dead = true;
-            //if (weapon != null) weapon.setEquipped(false);
         }
     }
 
