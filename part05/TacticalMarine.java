@@ -10,4 +10,9 @@ public class TacticalMarine extends SpaceMarine {
         ap += 12;
         if (ap > 50) ap = 50;
     }
+
+    @Override
+    public boolean moveCloseTo(Fighter target) {
+        return false;
+    }
 }
