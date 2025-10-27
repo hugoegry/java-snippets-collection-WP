@@ -12,7 +12,7 @@ public class Mage extends Character {
     @Override
     public void attack(String weapon) {
         if (weapon == null || (!weapon.equalsIgnoreCase("magic") && !weapon.equalsIgnoreCase("wand"))) {
-            System.out.println(this.name + ": I don’t need this stupid weapon!");
+            //System.out.println(this.name + ": I don’t need this stupid weapon!");
             return;
         }
 
@@ -40,3 +40,4 @@ public class Mage extends Character {
         System.out.println(this.name + ": moves back furtively.");
     }
 }
+
