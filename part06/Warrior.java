@@ -12,7 +12,7 @@ public class Warrior extends Character {
     @Override
     public void attack(String weapon) {
         if (weapon == null || (!weapon.equalsIgnoreCase("hammer") && !weapon.equalsIgnoreCase("sword"))) {
-            System.out.println(this.name + ": I don’t need this stupid weapon!");
+            //System.out.println(this.name + ": I don’t need this stupid weapon!");
             return;
         }
 
@@ -39,4 +39,5 @@ public class Warrior extends Character {
     public void moveBack() {
         System.out.println(this.name + ": moves back like a bad boy.");
     }
+
 }
