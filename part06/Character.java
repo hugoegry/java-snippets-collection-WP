@@ -4,7 +4,7 @@ public abstract class Character implements Movable {
     protected int agility = 2;
     protected int strength = 2;
     protected int wit = 2;
-    protected String RPGClass;
+    protected final String RPGClass;
 
     public Character(String name,  String RPGClass) {
         this.name = name;
@@ -57,5 +57,6 @@ public abstract class Character implements Movable {
     public void moveBack() {
         System.out.println(this.name + ": moves back");
     }
+
 
 }
